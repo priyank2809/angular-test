@@ -28,6 +28,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'userprofile', component : UserProfileComponent, canActivate:[AuthGuard]
+    //path: 'userprofile', component : UserProfileComponent
   }
 ];
 

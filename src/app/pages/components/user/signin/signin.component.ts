@@ -33,8 +33,15 @@ export class SigninComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.userService.login(form.value).subscribe(
       res => {
-        this.userService.setToken(res['token']);
-        this.router.navigateByUrl('/userprofile');
+        
+        if(res) {
+          this.userService.setToken(res['token']);
+          this.router.navigateByUrl('/userprofile');
+        } else {
+          this.serverErrorMessages = "User not found";
+        }
+        //this.userService.setToken(res['token']);
+        
       },
       err => {
         this.serverErrorMessages = err.error.message;

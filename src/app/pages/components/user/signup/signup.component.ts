@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../../core/services/user/user.service';
+import { User } from '../../../../core/models/user/user.model'
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -11,6 +12,8 @@ export class SignupComponent implements OnInit {
   fullName: any;
   email: any;
   password: any;
+
+  public _UserLoginModel = new User();
 
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   showSuccessMessage: boolean;
@@ -43,11 +46,12 @@ export class SignupComponent implements OnInit {
   }
 
   resetForm(form: NgForm) {
-    this.userService.selectedUser = {
-      fullName: '',
-      email: '',
-      password: ''
-    };
+    // this.userService.selectedUser = {
+    //   fullName: '',
+    //   email: '',
+    //   password: ''
+    // };
+
     form.resetForm();
     this.serverErrorMessage = '';
   }

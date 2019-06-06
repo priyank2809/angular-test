@@ -5,7 +5,7 @@
   <input 
     type="text" 
     #fullName="ngModel" 
-    [(ngModel)]="userService.selectedUser.fullName"
+    [(ngModel)]="_UserLoginModel.fullName"
     name="fullName"
     placeholder="Full Name"
     required  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !fullName.valid }">
@@ -16,7 +16,7 @@
   <input 
     type="text" 
     #email="ngModel" 
-    [(ngModel)]="userService.selectedUser.email"
+    [(ngModel)]="_UserLoginModel.email"
     name="email"
     placeholder="Email"
     required [pattern]="emailRegex"
@@ -29,7 +29,7 @@
   <input 
     type="password" 
     #password="ngModel" 
-    [(ngModel)]="userService.selectedUser.password"
+    [(ngModel)]="_UserLoginModel.password"
     name="password"
     placeholder="Password"
     minlength="4"
@@ -43,11 +43,12 @@
 </form>
 
 <!-- Success message -->
-<div class="success" *ngIf="showSucessMessage">
+
+<div class="success" *ngIf="showSuccessMessage">
   Saved successfully
 </div>
 
 <!-- Error message -->
-<div class="alert" *ngIf="serverErrorMessages">
+<div class="alert" *ngIf="serverErrorMessage">
   {{serverErrorMessage}}
 </div>

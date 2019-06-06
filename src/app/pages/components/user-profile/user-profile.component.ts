@@ -17,15 +17,9 @@ export class UserProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userService.getUserProfile().subscribe(
-      res => {
-        this.userDetails = res['user'];
-      },
-      err => {
-        console.log(err);
-
-      }
-    );
+    if(this.userService.currentUser) {
+      this.userDetails = this.userService.currentUser;
+    }
   }
 
   onLogout() {
